@@ -102,13 +102,10 @@ app.get('/api/admin/orders', (req, res) => {
         res.json({ success: true, data: rows });
     });
 });
-// Melayani file statis dari folder public
+// Melayani file statis dari folder public (untuk dijalankan lokal di PC/Termux)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Menampilkan index.html saat halaman utama dibuka
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+// (Hapus atau komentari bagian app.get('*', ...) atau app.get('/', ...))
 
 app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
