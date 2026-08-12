@@ -1,5 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const dbPath = process.env.VERCEL ? '/tmp/joki.db' : path.resolve(__dirname, 'joki.db');
+
 
 const dbPath = path.resolve(__dirname, 'joki.db');
 const db = new sqlite3.Database(dbPath, (err) => {
