@@ -102,12 +102,13 @@ app.get('/api/admin/orders', (req, res) => {
         res.json({ success: true, data: rows });
     });
 });
-// Melayani file statis dari folder public
-app.use(express.static(path.join(__dirname, 'public')));
+// Gunakan process.cwd() agar Vercel Serverless dapat menemukan folder public
+const publicPath = path.join(process.cwd(), 'public');
 
-// Mengarahkan halaman utama ke index.html
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.use(express.static(publicPath));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 module.exports = app;
