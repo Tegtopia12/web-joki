@@ -106,7 +106,7 @@ app.get('/api/admin/orders', (req, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Menampilkan index.html saat halaman utama dibuka
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
